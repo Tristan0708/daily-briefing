@@ -1,0 +1,19 @@
+name: Daily Briefing
+
+on:
+  schedule:
+    - cron: '30 0 * * 1-5'   # UTC 0:30 = 北京 8:30，周一到周五
+  workflow_dispatch:           # 允许手动触发（今天测试用）
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Coze API
+        run: |
+          curl -sS --location 'https://t8m9nthty5.coze.site/run' \
+            --header "Authorization: Bearer ${{ secrets.COZE_API_TOKEN }}" \
+            --header 'Content-Type: application/json' \
+            --data '{}' \
+            --max-time 300 \
+            -w '\nHTTP状态码: %{http_code}\n'
