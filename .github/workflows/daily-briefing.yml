@@ -2,7 +2,7 @@ name: Daily Briefing
 
 on:
   schedule:
-    - cron: '30 0 * * 1-5'   # UTC 0:30 = 北京 8:30，周一到周五
+    - cron: '37 0 * * 1-5'   # UTC 0:30 = 北京 8:30，周一到周五
   workflow_dispatch:           # 允许手动触发（今天测试用）
 
 jobs:
